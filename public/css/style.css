@@ -1,0 +1,245 @@
+/* body{
+    background-color: bisque;
+} */
+.navbar {
+    height: 5rem;
+    background-color: white;
+}
+
+.fa-compass {
+    color: #fe424d;
+    font-size: 2rem;
+}
+
+.nav-link {
+    color: #222222 !important;
+}
+
+footer {
+    background-color: #f8f8f8;
+    padding: 20px 0;
+    border-top: 1px solid #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.f-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.f-info-social a {
+    margin: 0 10px;
+    color: #555;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.f-info-social a:hover {
+    color: #0077ff;
+}
+
+.f-info-brand {
+    font-weight: 600;
+    color: #333;
+    font-size: 1rem;
+}
+
+.f-links {
+    display: flex;
+    gap: 15px;
+}
+
+.f-links a {
+    text-decoration: none;
+    color: #222222;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.f-links a:hover {
+    color: #0077ff;
+}
+
+
+/* Make cards responsive: 5 per row, clean spacing */
+.row.row-cols-lg-3>* {
+    width: 20% !important;
+    max-width: 20% !important;
+    padding: 0.75rem !important;
+}
+
+/* Make card clean and modern */
+.card {
+    border: none !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    position: relative !important;
+}
+
+/* Hover effect */
+.card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Image: rounded, fixed height */
+.card-img-top {
+    height: 180px !important;
+    object-fit: cover !important;
+    border-radius: 20px !important;
+    margin-bottom: 0 !important;
+}
+
+/* Card body spacing */
+.card-body {
+    padding: 0.75rem 1rem !important;
+    text-align: left !important;
+}
+
+/* Title and price formatting */
+.card-text {
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    color: #333 !important;
+    margin: 0 !important;
+    line-height: 1.4 !important;
+}
+
+/* Link styling */
+.card-link {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+/* Add "Guest Favourite" badge (top-left corner) */
+.card::before {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: white;
+    color: #222;
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 999px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+/* Add heart icon (top-right corner) */
+.card::after {
+    content: "♡";
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    font-size: 1.25rem;
+    color: #222;
+    z-index: 2;
+    cursor: pointer;
+}
+
+/* Responsive: 3 per row on tablet, 1 on mobile */
+@media (max-width: 992px) {
+    .row.row-cols-lg-3>* {
+        width: 33.33% !important;
+        max-width: 33.33% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .row.row-cols-lg-3>* {
+        width: 50% !important;
+        max-width: 50% !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .row.row-cols-lg-3>* {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+
+/* new listings css*/
+form {
+    background-color: #fff !important;
+    border-radius: 15px !important;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+button.btn-primary {
+    background-color: #ff385c !important;
+    border: none !important;
+    font-weight: bold !important;
+}
+
+button.btn-primary:hover {
+    background-color: #e11d48 !important;
+}
+
+/* edit ejs style */
+
+form {
+    background-color: #fff !important;
+    border-radius: 15px !important;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+button.btn-warning {
+    font-weight: bold !important;
+}
+
+
+.card-body i.bi {
+    font-size: 1.1rem;
+}
+
+
+
+
+/* nav bar filter styling */
+
+.filter-bar {
+    margin-top: 2rem !important;
+    border-bottom: 1px solid #ddd;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+}
+
+.filter-bar::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera */
+}
+
+.filter-item {
+    min-width: 80px;
+    color: #111;
+    opacity: 0.7;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.filter-item:hover {
+    transform: scale(1.05);
+    color: #000;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.filter-item i {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.taxinfo {
+    display: none;
+}

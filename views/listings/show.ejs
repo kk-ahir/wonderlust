@@ -1,0 +1,105 @@
+<% layout("layouts/basic.ejs") %>
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+
+                <!-- Listing Card -->
+                <div class="card shadow-sm rounded">
+                    <img src="<%= listing.image?.url || listing.img || 'https://via.placeholder.com/800x400?text=No+Image' %>"
+                        class="card-img-top" alt="<%= listing.title %>"
+                        style="object-fit: cover; height: 300px; border-top-left-radius: 12px; border-top-right-radius: 12px;">
+                    <div class="card-body">
+                        <h3 class="card-title text-center mb-4">
+                            <%= listing.title %>
+                        </h3>
+                        <ul class="list-group list-group-flush mb-4">
+                            <li class="list-group-item"><strong>Ownedby:</strong>
+                                <i>
+                                    <%= listing.owner.username%>
+                                </i>
+                            </li>
+                            <li class="list-group-item"><strong>Description:</strong>
+                                <%= listing.description %>
+                            </li>
+                            <li class="list-group-item"><strong>Price:</strong> ₹<%=
+                                    listing.price.toLocaleString("en-IN") %>
+                            </li>
+                            <li class="list-group-item"><strong>Location:</strong>
+                                <%= listing.location %>
+                            </li>
+                            <li class="list-group-item"><strong>Country:</strong>
+                                <%= listing.country %>
+                            </li>
+                        </ul>
+                        <% if(currUser && currUser._id.equals(listing.owner._id)){ %>
+                            <div class="d-flex justify-content-between mt-4">
+                                <a href="/listings/<%= listing._id %>/edit" class="btn btn-primary">✏️ Edit</a>
+                                <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST">
+                                    <button type="submit" class="btn btn-danger">🗑️ Delete</button>
+                                </form>
+                            </div>
+                            <% } %>
+                                <div class="text-center mt-4">
+                                    <a href="/listings" class="btn btn-secondary">← Back to Listings</a>
+                                </div>
+                    </div>
+                </div>
+
+                <!-- Review Form -->
+                <% if(currUser){ %>
+                    <form action="/listings/<%= listing._id %>/review" method="POST" class="mt-4 needs-validation"
+                        novalidate>
+                        <hr>
+                        <h4 class="text-center mb-3">💬 Leave a Review</h4>
+                        <div class="mb-3">
+                            <label for="ratings" class="form-label fw-bold">Give Rating:</label>
+                            <input type="range" class="form-range" min="1" max="5" id="ratings" name="review[ratings]"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="comment" class="form-label fw-bold">Add a Comment:</label>
+                            <textarea name="review[comment]" id="comment" class="form-control" rows="4"
+                                placeholder="Write your review here..." required></textarea>
+                            <div class="invalid-feedback">Add a comment</div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success px-4">✅ Submit Review</button>
+                        </div>
+                    </form>
+                    <% } %>
+                        <!-- All Reviews -->
+                        <hr>
+                        <h4 class="mt-5 mb-3">📝 All Reviews</h4>
+                        <div class="row g-4">
+                            <% for (let review of listing.reviews) { %>
+                                <div class="col-md-6">
+                                    <div class="card border-0 shadow-sm rounded-4 p-3">
+                                        <div class="card-body">
+                                            <p class="mb-0 fs-6">
+                                                @ <%= review.author.username %>
+                                            </p>
+                                            <div class="mb-2">
+                                                <% for (let i=0; i < Number(review.ratings); i++) { %>
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                    <% } %>
+                                                        <% for (let i=Number(review.ratings); i < 5; i++) { %>
+                                                            <i class="bi bi-star text-muted"></i>
+                                                            <% } %>
+                                            </div>
+                                            <p class="mb-0 fs-6">
+                                                <%= review.comment %>
+                                            </p>
+                                        </div>
+                                        <form
+                                            action="/listings/<%= listing._id %>/review/<%= review._id %>?_method=DELETE"
+                                            method="post">
+                                            <button>delete</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <% } %>
+                        </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,56 @@
+<% layout("layouts/basic.ejs") %>
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form action="/listings" method="post" class="shadow p-4 rounded bg-light needs-validation" novalidate enctype="multipart/form-data">
+
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" placeholder="Enter title" name="listings[title]" required
+                            class="form-control">
+                        <div class="valid-feedback">
+                            Looks Good
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea name="listings[description]" placeholder="Enter description" rows="4" required
+                            class="form-control"></textarea>
+                        <div class="invalid-feedback"> Description should be entered</div>
+                           
+                        
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="imag" class="form-label">upload Image</label>
+                        <input type="file" placeholder="Enter image URL" name="listings[image]" class="form-control">
+                    </div>
+
+                    <div class="row">
+                        <div class="mb-3 col-md-4">
+                            <label for="price" class="form-label">Price</label>
+                            <input  placeholder="12000" name="listings[price]" required
+                                class="form-control" type="number">
+                            <div class="invalid-feedback"> Price should be entered</div>
+                        </div>
+
+                        <div class="mb-3 col-md-8">
+                            <label for="country" class="form-label">Country</label>
+                            <input type="text" placeholder="India" name="listings[country]" required
+                                class="form-control">
+                            <div class="invalid-feedback"> Country should be entered</div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" placeholder="Dwarka" name="listings[location]" required class="form-control">
+                        <div class="invalid-feedback"> Location should be entered</div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">Add Listing</button>
+                </form>
+            </div>
+        </div>
+    </div>

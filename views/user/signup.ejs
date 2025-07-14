@@ -1,0 +1,23 @@
+<% layout("layouts/basic.ejs") %>
+    <div class="col-6 offset-3">
+        <form action="/signup" method="post" novalidate class="needs-validation">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" placeholder="Enter username" name="username" required class="form-control">
+                <div class="valid-feedback">
+                    Looks Good
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">email</label>
+                <input type="email" placeholder="Enter email" name="email" required class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">password</label>
+                <input type="text" placeholder="password" name="password" required class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success w-100">Signup</button>
+        </form>
+    </div>

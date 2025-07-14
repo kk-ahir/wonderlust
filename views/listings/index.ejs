@@ -1,0 +1,85 @@
+<% layout("layouts/basic.ejs") %>
+    <%= msg %>
+
+
+        <body>
+            <!-- Filter Bar -->
+            <!-- Filter Bar -->
+            <div class="filter-bar d-flex justify-content-between flex-wrap align-items-center px-2 py-3 text-center">
+                <div class="filter-item mx-3">
+                    <i class="fa-solid fa-fire fa-xl"></i>
+                    <div>Trending</div>
+                </div>
+                <div class="filter-item mx-3">
+                    <i class="fa-solid fa-bed fa-xl"></i>
+                    <div>Rooms</div>
+                </div>
+                <div class="filter-item mx-3">
+                    <i class="fa-solid fa-city fa-xl"></i>
+                    <div>Iconic Cities</div>
+                </div>
+                <div class="filter-item mx-3">
+                    <i class="fa-solid fa-mountain fa-xl"></i>
+                    <div>Mountains</div>
+                </div>
+                <div class="filter-item mx-3">
+                    <i class="fa-solid fa-chess-rook fa-xl"></i>
+                    <div>Castles</div>
+                </div>
+                <div class="filter-item mx-3">
+                    <i class="fa-solid fa-water-ladder fa-xl"></i>
+                    <div>Amazing Pools</div>
+                </div>
+                <div class="filter-item mx-3">
+                    <i class="fa-solid fa-campground fa-xl"></i>
+                    <div>Camping</div>
+                </div>
+                <div class="filter-item mx-3">
+                    <i class="fa-solid fa-tractor fa-xl"></i>
+                    <div>Farms</div>
+                </div>
+                <div class="filter-item mx-3">
+                    <i class="fa-solid fa-snowflake fa-xl"></i>
+                    <div>Arctic</div>
+                </div>
+                <div class="form-check form-switch ">
+                    <input class="form-check-input " type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                    <label class="form-check-label " for="flexSwitchCheckDefault">Total with Taxses</label>
+                </div>
+            </div>
+
+
+
+            <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+                <%for(listing of allListings){%>
+                    <a href="/listings/<%= listing._id %>" class="card-link">
+                        <div class="card" style=" height:15rem;">
+                            <img src="<%= listing.image.url %>" class="card-img-top" alt="Listing image">
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <%= listing.title %> <br>
+                                        &#8377;<%= listing.price.toLocaleString("en-IN") %>/night
+                                            <i class="taxinfo">&nbsp; &nbsp; +18% gst</i>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    <% } %>
+            </div>
+
+            <script>
+                let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+                let taxInfo = document.getElementsByClassName("taxinfo");
+                taxSwitch.addEventListener("click", () => {
+                    for (info of taxInfo) {
+                        if (info.style.display == "inline") {
+                            info.style.display = "none";
+                        } else {
+                            info.style.display = "inline";
+                        }
+
+                    }
+                });
+
+            </script>
+        </body>
